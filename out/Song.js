@@ -18,7 +18,26 @@ var Song = function () {
         value: function toString() {
             return this.name + " By: " + this.author + ". Duration: " + this.duration;
         }
+
+        // testing Rest params
+
     }], [{
+        key: "sumSongDurations",
+        value: function sumSongDurations() {
+            for (var _len = arguments.length, songs = Array(_len), _key = 0; _key < _len; _key++) {
+                songs[_key] = arguments[_key];
+            }
+
+            /**
+             * Adds the total duration of the given songs
+             * Careful with how reduce handles objects
+             */
+
+            return songs.reduce(function (prev, curr) {
+                return { duration: prev.duration + curr.duration };
+            });
+        }
+    }, {
         key: "createSongs",
         value: function createSongs(n) {
             /**
@@ -36,6 +55,8 @@ var Song = function () {
     return Song;
 }();
 
-console.log(Song.createSongs(5).map(function (song) {
+var songs = Song.createSongs(5);
+console.log(songs.map(function (song) {
     return song.toString();
 }));
+console.log(Song.sumSongDurations(songs[0], songs[1], songs[2]));

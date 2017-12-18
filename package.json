@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "babel": {
-    "presets": ["env"]
+    "presets": [
+      "env"
+    ]
   },
   "dependencies": {
     "babel-preset-env": "^1.6.1",

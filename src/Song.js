@@ -9,6 +9,18 @@ class Song {
         return this.name + " By: " + this.author + ". Duration: " + this.duration
     }
 
+    // testing Rest params
+    static sumSongDurations(...songs){
+        /**
+         * Adds the total duration of the given songs
+         * Careful with how reduce handles objects
+         */
+
+        return songs.reduce((prev, curr) => { 
+            return {duration: prev.duration + curr.duration}
+        })
+    }
+
     static createSongs(n){
         /**
          * Creates n number of songs
@@ -21,7 +33,8 @@ class Song {
         return result
     }
 }
-
-console.log(Song.createSongs(5).map(song => song.toString()))
+let songs = Song.createSongs(5)
+console.log(songs.map(song => song.toString()))
+console.log(Song.sumSongDurations(songs[0], songs[1], songs[2]))
 
 
